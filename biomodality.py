@@ -9,7 +9,7 @@ import os
 # Gebruik non-interactive backend voor server/script omgevingen
 plt.switch_backend('Agg')
 
-def calculate_bimodality_score(flow_series, smooth_window=15, max_rel_pos=0.5, max_p1_rel_pos=0.25):
+def calculate_bimodality_score(flow_series, smooth_window=3, max_rel_pos=0.5, max_p1_rel_pos=0.25):
     """
     Berekent bimodaliteit, score en pieken.
     Bimodaliteit mag alleen in de eerste helft van de melking zitten.
