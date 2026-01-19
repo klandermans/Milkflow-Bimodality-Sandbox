@@ -22,9 +22,9 @@ def calculate_bimodality_score(flow_series, smooth_window=15, max_rel_pos=0.5, m
     # 2. Peak Detection
     peaks, properties = find_peaks(
         smoothed.values,
-        distance=30,
-        prominence=20,
-        height=50
+        distance=20,
+        prominence=10,
+        height=40
     )
     
     total_len = len(smoothed)
