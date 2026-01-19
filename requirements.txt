@@ -1,4 +1,4 @@
-sckikit-learn
+scikit-learn
 matplotlib
 streamlit-drawable-canvas
 streamlit
