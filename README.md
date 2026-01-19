@@ -2,6 +2,8 @@
 
 Interactieve webapp om melkflow-curves te tekenen en te analyseren op bimodaliteit met dezelfde logica als het batch-script. Ideaal voor onderzoek, demonstraties en threshold-tuning.
 
+
+https://milkflow-bimodality-sandbox.streamlit.app
 ---
 
 ## 🎯 Features
