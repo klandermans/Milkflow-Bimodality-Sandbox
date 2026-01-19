@@ -9,60 +9,6 @@ import os
 # Gebruik non-interactive backend voor server/script omgevingen
 plt.switch_backend('Agg')
 
-# --- LOGIC CORE ---
-
-# def calculate_bimodality_score(flow_series, smooth_window=15):
-#     """
-#     Berekent bimodaliteit, score en pieken.
-#     Returns: dict met resultaten en metadata voor plot
-#     """
-#     # 1. Smoothing
-#     smoothed = flow_series.rolling(window=smooth_window, center=True, min_periods=1).mean()
-    
-#     # 2. Peak Detection
-#     peaks, properties = find_peaks(smoothed.values, distance=30, prominence=20, height=50)
-    
-#     num_peaks = len(peaks)
-#     result = {
-#         'is_bimodal': False,
-#         'score': 0.0,
-#         'num_peaks': num_peaks,
-#         'peaks': peaks,
-#         'smoothed': smoothed,
-#         'valley_idx': None,
-#         'valley_val': None
-#     }
-    
-#     if num_peaks < 2:
-#         return result
-    
-#     # 3. Score calculation
-#     sorted_indices = np.argsort(properties['prominences'])[::-1]
-#     top_peaks = sorted(peaks[sorted_indices[:2]])
-    
-#     p1_idx, p2_idx = top_peaks[0], top_peaks[1]
-    
-#     # Zoek dal tussen de pieken
-#     valley_relative_idx = np.argmin(smoothed.values[p1_idx:p2_idx])
-#     valley_idx = p1_idx + valley_relative_idx
-#     valley_val = smoothed.values[valley_idx]
-    
-#     p1_val, p2_val = smoothed.values[p1_idx], smoothed.values[p2_idx]
-#     min_peak = min(p1_val, p2_val)
-    
-#     if min_peak == 0:
-#         return result
-    
-#     ratio = 1 - (valley_val / min_peak)
-    
-#     result.update({
-#         'is_bimodal': ratio > 0.45,
-#         'score': round(ratio, 4),
-#         'valley_idx': valley_idx,
-#         'valley_val': valley_val
-#     })
-    
-#     return result
 def calculate_bimodality_score(flow_series, smooth_window=15, max_rel_pos=0.5, max_p1_rel_pos=0.25):
     """
     Berekent bimodaliteit, score en pieken.
@@ -131,7 +77,7 @@ def calculate_bimodality_score(flow_series, smooth_window=15, max_rel_pos=0.5, m
     ratio = 1 - (valley_val / min_peak)
     
     result.update({
-        'is_bimodal': ratio > 0.45,
+        'is_bimodal': ratio > 0.35,
         'score': round(ratio, 4),
         'valley_idx': valley_idx,
         'valley_val': valley_val
