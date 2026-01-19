@@ -77,7 +77,7 @@ def calculate_bimodality_score(flow_series, smooth_window=15, max_rel_pos=0.5, m
     ratio = 1 - (valley_val / min_peak)
     
     result.update({
-        'is_bimodal': ratio > 0.35,
+        'is_bimodal': ratio > 0.3,
         'score': round(ratio, 4),
         'valley_idx': valley_idx,
         'valley_val': valley_val
